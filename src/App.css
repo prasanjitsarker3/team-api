@@ -27,6 +27,19 @@
 .App-link {
   color: #61dafb;
 }
+.homeDetails{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  margin-right: 60px;
+  margin-left:70;
+  
+}
+.card-container {
+  text-align: center;
+ 
+}
 
 @keyframes App-logo-spin {
   from {

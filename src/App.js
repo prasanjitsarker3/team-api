@@ -1,24 +1,43 @@
 import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import footballData from './components/Data/Data.json';
+import { useEffect, useState } from 'react';
+import Team from './components/Team/Team';
+import Teamcart from './components/Teamcart/Teamcart';
 
 function App() {
+  const [football, setFootball] = useState([]);
+  const [cart, setCart] = useState([])
+  useEffect(() => {
+    setFootball(footballData);
+     
+
+  },[])
+  const handleTeam = (football) => {
+    const newCount = [...cart, football];
+         setCart(newCount);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+         <div className="card-container" >
+           <h1>World  FootBall Club</h1>
+           <Teamcart cart={cart}></Teamcart>
+        </div>
+
+        <div className="homeDetails ">
+        
+        {
+          football.map(footBall => <Team football={footBall} handleTeam={handleTeam}></Team>  )
+        }
+    
+        </div>
+        
+        
     </div>
+    
+    
   );
 }
 
